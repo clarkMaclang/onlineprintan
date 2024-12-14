@@ -1,0 +1,1080 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;}
+html{
+  scroll-behavior: smooth;
+}
+/*Imports*/
+@import url("https://fonts.googleapis.com/css2?family=Arvo&family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+/*Font Family*/
+@font-face {
+    font-family: 'bebas';
+      src:
+        url('./fonts/BebasNeue-Regular.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    font-family: 'coolvetica';
+      src: 
+        url('./fonts/coolveticarg.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    font-family: 'roboto';
+      src: 
+        url('./fonts/Roboto-BoldCondensed.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    font-family: 'akira';
+      src: 
+        url('./fonts/Akira\ Expanded\ Demo.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+}
+/* Main Navigator Bar */
+.navbar {
+    background: #fefefe;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+.navbar_container {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    z-index: 1;
+    width: 100%;
+    margin-right: auto; 
+    padding: 0 50px;
+}
+.navbar_menu {
+    display: flex; /* Enables Flexbox for alignment */
+    align-items: center;
+    list-style: none;
+    text-align: center;
+    justify-content: flex-end; /* Sticks items to the far-right */
+    margin-left: auto; /* Pushes the menu items to the right */
+}
+/* Logo at the top */
+#navbar_logo {
+    width: 45px; /* Set the width of your logo */
+    height: 50px; /* Set the height of your logo */
+    background-image: url('./images/Logo.png');
+    background-size: cover;
+    transition: background-image 0.3s ease; /* Add transition effect */
+}
+#navbar_logo:hover {
+    background-image: url('./images/Logo_Hover.png'); /* New logo on hover */
+}
+/* Cart icon button */
+.navbar_btn a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  position: relative;
+  margin-left: 20px;
+}
+
+.fas.fa-shopping-cart {
+  font-size: 1.5rem;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+/* Cart icon hover effect */
+.navbar_btn a:hover .fas.fa-shopping-cart {
+  color: #fefefe;
+  -webkit-text-stroke: 0.4px #131313; /* Glow effect */
+  text-shadow: 0 0 20px #131313, 0 0 30px #131313;
+  transform: scale(1.2); /* Slight zoom on hover */
+}
+
+/* Sliding Form Styles */
+.side-form {
+  font-family: "akira";
+  position: fixed;
+  top: 0;
+  right: 0; /* The form is visible now */
+  width: 300px;
+  height: 100%;
+  background-color: #131313;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  z-index: 1000;
+  justify-items: center;
+  align-items: center;
+  transform: translateX(100%); /* Initially position the form off-screen to the right */
+  transition: transform 0.5s ease-in-out; /* Add a smooth transition for the sliding effect */
+}
+/* Visible form (when triggered) */
+.side-form.visible {
+  transform: translateX(0); /* When visible, position the form on the screen */
+}
+/* Hidden form (default state) */
+.side-form.hidden {
+  transform: translateX(100%); /* When hidden, slide the form back out */
+}
+
+/* Optional: Style for the cart content */
+.side-form h2 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  color: #fefefe;
+  font-weight: normal;
+  margin-top: 50px;
+}
+.side-form p {
+  font-size: 0.8rem;
+  color: #fefefe;
+  margin-top: 50px;
+}
+#reviewText{
+  color: #fefefe;
+}
+.navbar_item {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    margin-left: 20px; /* Adds spacing between menu items */
+}
+.navbar_links {
+    text-decoration: none; /* Removes underline from links */
+    color: #131313; /* Makes the fill of the text invisible */
+    font-size: 0.7rem; /* Adjust font size */
+    font-family: 'coolvetica';
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    position: relative;
+    
+}
+.navbar_links:hover {
+    color: #fefefe; /* Change color on hover */
+    -webkit-text-stroke: 0.4px #131313; /* Removes the stroke on hover */
+    text-shadow: 0 0 20px #131313, 0 0 30px #131313; /* Glow effect */
+    font-size: 1rem;
+}
+
+
+
+/* Secondary Navigator Bar */
+.sec_navbar {
+  background: #131313; /* Set the background color for the navbar */
+  display: flex;
+  justify-content: center; /* Centers the container horizontally */
+  align-items: center; /* Centers items vertically */
+  height: 50px; /* Adjust height as needed */
+  z-index: 1000; /* Ensure it's above other elements */
+}
+.sec_navbar_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.sec_navbar_menu {
+  display: flex; /* Arrange items horizontally */
+  list-style: none; /* Remove bullet points */
+  margin: 0;
+  padding: 0;
+}
+.sec_navbar_item {
+  margin: 0 10px; /* Adds spacing between the menu items */
+}
+.sec_navbar_links {
+  text-decoration: none; /* Removes underline from links */
+  color: #fefefe; /* Text color */
+  font-size: 0.7rem; /* Adjust font size */
+  font-family: 'coolvetica';
+  padding: 0 10px; /* Add padding to links */
+  border: 2px solid transparent; /* Set a transparent border initially */
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+  position: relative; /* Allows the box to be positioned around the text */
+  pointer-events: auto; /* Enables clicking */
+}
+.sec_navbar_links:hover {
+  border-color: #fefefe; /* Adds the colored border when hovered */
+  padding: 0 10px; /* Keeps padding consistent when border is added */
+}
+.sec_navbar_links:before {
+  content: ''; /* Empty content */
+  position: absolute;
+  bottom: -4px; /* Adjust this value for spacing between text and the box */
+  left: 0;
+  width: 100%;
+  height: 2px; /* Height of the box */
+  background-color: #fefefe; /* The color of the box */
+  transform: scaleX(0); /* Initially the box is not visible */
+  transform-origin: bottom right; /* Starts from the right side */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+/* Bottom bar styles, side bar */
+.bottom_bar {
+  background: #131313;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100%;
+  justify-content: space-between; /* Ensures even spacing between logo and menu */
+}
+.bottom_bar_container {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  z-index: 1;
+  width: 100%;
+  margin-right: auto; 
+  padding: 0 50px;
+}
+.bottom_bar_menu {
+  display: flex; /* Enables Flexbox for alignment */
+  align-items: center;
+  list-style: none;
+  text-align: center;
+  justify-content: flex-end; /* Sticks items to the far-right */
+  margin-left: auto; /* Pushes the menu items to the right */
+}
+.bottom_bar_item {
+  margin: 0 10px; /* Adds spacing between the menu items */
+}
+.bottom_bar_links1, .bottom_bar_links2, .bottom_bar_links3 {
+  text-decoration: none; /* Removes underline from links */
+  color: #fefefe; /* Text color */
+  font-size: 2rem; /* Adjust font size */
+  font-family: 'coolvetica', sans-serif;
+  padding: 0 10px; /* Add padding to links */
+  border: 2px solid transparent; /* Set a transparent border initially */
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+  position: relative; /* Allows the box to be positioned around the text */
+}
+.bottom_bar_links2 {
+  font-size: 2.3rem;
+}
+.bottom_bar_links3 {
+  font-size: 3rem;
+  padding-bottom: 10px;
+}
+.bottom_bar_links1:hover, .bottom_bar_links2:hover, .bottom_bar_links3:hover {
+  color: #131313; /* Change color on hover */
+  -webkit-text-stroke: 0.4px #fefefe; /* Removes the stroke on hover */
+  text-shadow: 0 0 20px #fefefe, 0 0 30px #fefefe; /* Glow effect */
+  transform: scale(1.2);
+}
+
+/* Logo in the bottom bar */
+#bottom_bar_logo {
+  width: 45px; /* Same size as the top navbar logo */
+  height: 50px;
+  background-image: url('./images/Logo1.png'); /* Replace with your logo path */
+  background-size: cover;
+  margin-right: 20px; /* Adds spacing between the logo and the menu */
+  transition: background-image 0.3s ease;
+}
+#bottom_bar_logo:hover {
+  background-image: url('./images/Logo1_hover.png'); /* Hover logo effect */
+}
+.bottom_bar_item:last-child {
+  margin-bottom: 10px; /* Adds space below the last item */
+}
+
+/* Advertisement Frame1 */
+.advertisement_frame1 {
+  width: 100%;
+  background-color: #f4f4f4; /* Set background color for the ad frame */
+  padding: 0; /* Add some space around the ad */
+  display: flex;
+  justify-content: center; /* Center the advertisement */
+  align-items: center;
+  border-top: 2px solid #131313; /* Optional: adds a border on top of the frame */
+}
+.advertisement_image1 {
+  max-width: 100%; /* Make sure the ad is responsive */
+  height: auto;
+}
+
+/* Two boxes Frame2 */
+.advertisement_frame2 {
+  width: 100%;
+  background-color: #131313; /* Set background color for the ad frame */
+  padding: 100px 0; /* Add space around the ad */
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  border-top: 2px solid #131313; /* Optional: border at the top of the frame */
+}
+.advertisement_boxes {
+  display: flex;
+  justify-content: space-between; /* Space out the boxes */
+  width: 90%; /* Adjust width to control the space between the boxes */
+}
+/* Style for each box */
+.box {
+  width: 47%;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5); /* Optional: add a shadow effect */
+  text-align: center;
+  border-radius: 8px; /* Optional: rounded corners */
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+/* Make sure the images inside the boxes are responsive */
+.box_image {
+  width: 100%; /* Ensure the image fills the box */
+  height: auto;
+  border-radius: 6px; /* Optional: rounded corners for the images */
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.box:hover {
+    transform: scale(0.9); /* Enlarge the image on hover */
+}
+
+/* Quote Text Styling, About Us */
+.quote_text, .about_quote_text {
+  font-family: 'Roboto', sans-serif;
+  color: #131313; /* Default font color */
+  text-align: center; /* Centers the text */
+  max-width: 100%; /* Optional: limits the width of the text */
+  line-height: 1.5; /* Adjust line height for readability */
+  font-weight: bold; /* Makes the text bold */
+  line-height: 1; /* Adjust this value for spacing (1.5 is default, increase for more space) */
+  position: relative;
+  padding: 10px 20px; /* Adds padding around the text */
+  background-color: #fff; /* White background for the text */
+}
+.quote_text{
+  font-size: 2rem; /* Adjust font size */
+  box-shadow: 0px 4px 6px rgba(255, 255, 255, ); /* Optional: shadow effect */
+}
+.about_quote_text{
+  font-style: italic;
+  font-size: 2rem;
+}
+/* Larger text for the lower part of the quote */
+.quote_highlight, .quote_highlight1 {
+  font-family: 'akira', sans-serif;
+  font-size: 2.5rem; /* Adjust size as needed */
+  color: #131313; /* Optional: change color for emphasis */
+  font-weight: bold; /* Optional: make it bold */
+  display: block; /* Makes the highlighted text appear on a new line */
+}
+
+/* Customer Reviews Slider */
+.customer_review_slider {
+  width: 100%;
+  background-color: #131313; /* Set background color for the ad frame */
+  padding: 100px 0; /* Add space around the ad */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+/* Style for the review box */
+.review_box {
+  width: 80%; /* Adjust width of the box */
+  background-color: #fff; /* Background color of the box */
+  padding: 80px; /* Add padding inside the box */
+  border-radius: 8px; /* Optional: rounded corners */
+  position: relative;
+}
+/* Header styling */
+.header_review {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.5rem;
+  color: #fefefe;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px; /* Adds space below the header */
+}
+/* Slide styling */
+.review_slide {
+  display: none; /* Hide all slides initially */
+  text-align: center;
+  padding: 2rem;
+}
+.review_slide_item {
+  padding: 1rem;
+  margin-bottom: 20px;
+}
+.review_slide p {
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  font-size: 1.5rem;
+}
+.review_slide h2{
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  font-style: normal;
+  text-align: right;
+  font-size: 1.7rem;
+}
+/* Navigation buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  padding: 1.5rem;
+  color: #fefefe;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  transition: 0.4s;
+  user-select: none;
+}
+/* Position the "next" button to the right */
+.next {
+  right: 3%;
+}
+.prev {
+  left: 3%;
+}
+/* Style for hover effect */
+.prev:hover, .next:hover {
+  background-color: #fefefe;
+  color: #131313;
+}
+/* Dot navigation container */
+.dot-container {
+  text-align: center;
+  padding: 20px 0;
+}
+/* Style for each dot */
+.dot {
+  height: 0.9375rem;
+  width: 0.9375rem;
+  margin: 0 2px;
+  background-color: #fefefe;
+  border-radius: 100%;
+  display: inline-block;
+  transition: background-color 0.4s ease;
+}
+/* Active dot style */
+.active {
+  background-color: #fefefe;
+  border-radius: 0%;
+}
+
+/* Home header, About Us body */
+.highlight_frame, .about_frame, .review_frame{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #fefefe; /* Light background color */
+  margin: 20px auto;
+}
+.review_frame {
+  max-width: 100%;
+  flex-direction: column;
+}
+.about_frame {
+  background-color: #131313;
+}
+/* Brief about us frame, How to Order frame, About us frame */
+.text_content, .about_text, .review_content {
+  flex: 1;
+  margin-right: 20px; /* Space between text and image */
+  padding: 50px;
+}
+.review_content{
+  margin-right: 0;
+}
+.procedure_content{
+  padding: 150px;
+  margin-top: -100px;
+  flex: 1;
+}
+.text_content h2, .procedure_content h2, .about_text h2, .review_content h2 {
+  font-family: 'akira', sans-serif;
+  font-size: 3.5rem;
+  color: #131313;
+  margin-bottom: 10px;
+}
+.text_content p, .procedure_content p, .about_text p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  color: #131313;
+  line-height: 1.6;
+}
+.procedure_content{
+  margin-bottom: -100px;
+}
+.procedure_highlight {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  font-style: italic;
+  font-size: 2.5rem;
+  color: #131313;
+  line-height: 1.6;
+}
+.procedure_content h2{
+  text-align: center;
+  margin-bottom: 50px;
+}
+.lead_service_container, .write_review_container {
+  font-family: 'akira', sans-serif;
+  cursor: pointer;
+  position: relative;
+  justify-self: center;
+  margin-bottom: 100px;
+  padding: 1rem;
+  background-color: #131313;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  transition: 0.4s;
+  user-select: none;
+  text-align: center;
+}
+.write_review_container {
+  margin-bottom: 0;
+  max-width: 100%;
+}
+.lead_service_content, .write_review_content {
+  text-decoration: none;
+  color: #fefefe;
+  transition: color 0.4s; /* Smooth transition for text color */
+}
+.lead_service_container:hover, .write_review_container:hover {
+  background-color: #fefefe;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.lead_service_container:hover .lead_service_content, .write_review_container:hover .write_review_content {
+  color: #131313; /* Change text color when parent is hovered */
+}
+
+/* General Font Styling */
+.text_content h2, .procedure_content h2, .quote_highlight1, .gallery_text h2, .review_content h2 { /* style the font with glitch effect */
+  text-shadow: -4px 2px 4px rgba(255, 238, 0, 0.5), 0px 4px 1px rgba(255, 0, 242, 0.5), 4px 0px 1px rgba(0, 225, 255, 0.5)
+}
+.quote_highlight{
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow to the text */
+}
+.quote_highlight, .quote_highlight1{
+  display: inline; /* Ensures both highlights remain in one line */
+  font-weight: bold; /* Optional: Adjust font styling */
+}
+.about_text h2, .about_text p{
+  color: #fefefe;
+  border-color: #131313;
+}
+
+/* image_content styling */
+.image_content{
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.image_content img {
+  height: auto;
+  width: 100%;
+  border-radius: 10px; /* Optional rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Subtle shadow for the image */
+}
+
+
+/* Responsive adjustment */
+@media (max-width: 765px) {
+  .sec_navbar {
+    flex-direction: column;
+    height: auto; /* Adjust height dynamically */
+  }
+  .sec_navbar_item {
+    margin: 5px 0; /* Reduce spacing for vertical layout */
+  }
+  .sec_navbar_links {
+    font-size: 0.6rem; /* Scale down font size */
+  }
+  .advertisement_boxes {
+    flex-direction: column; /* Stack the boxes vertically */
+    align-items: center; /* Center the stacked boxes */
+  }
+  .box {
+    width: 90%; /* Adjust the width to look good in vertical layout */
+    margin: 20px 0; /* Add space between stacked boxes */
+  }
+  .quote_text {
+      font-size: 1rem; /* Further reduce font size */
+  }
+  .quote_highlight{
+    font-size: 1.9rem;
+  }
+  .highlight_frame {
+    flex-direction: column; /* Stack text and image */
+  }
+  .text_content {
+    margin-right: 0; /* Remove margin in stacked layout */
+    margin-bottom: 20px; /* Add space between text and image */
+  }
+  .text_content h2{
+    font-size: 2.5rem;
+  }
+  .text_content p{
+    font-size: 1rem;
+  }
+  .image_content{
+    margin-right: 0;
+    width: 85%;
+  }
+}
+@media (max-width: 550px) {
+  .quote_text {
+      font-size: 0.8rem;
+  }
+  .quote_highlight{
+    font-size: 1.4rem;
+  }
+}
+
+/* Reviews */
+.frame {
+  display: flex; /* Creates a flex container */
+  align-items: center; /* Vertically aligns items */
+  justify-content: space-between; /* Adds space between items */
+  border: 2px solid #ccc; /* Optional: adds a border for the frame */
+  padding: 20px; /* Adds some inner spacing */
+  max-width: 800px; /* Optional: limits the frame's width */
+  margin: 20px auto; /* Centers the frame horizontally */
+}
+.faqs_frame {
+  max-width: 100%;
+  justify-content: center;
+  display: flex;
+  margin: 100px;
+}
+.image-container {
+  flex: 1; /* Allows the image container to take up available space */
+  max-width: 40%; /* Restricts the width of the image container */
+}
+.image-container img {
+  width: 100%; /* Ensures the image fits within its container */
+  height: auto; /* Maintains the image's aspect ratio */
+  border-radius: 8px; /* Optional: adds rounded corners to the image */
+}
+.text-container {
+  flex: 2; /* Allows the text container to take up more space */
+  padding-left: 20px; /* Adds spacing between the image and text */
+}
+.text-container h2 {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.text-container p {
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.faqs_container {
+  font-family: Arial, sans-serif; /* Optional font */
+  text-align: left; /* Align text to the left */
+  background-color: #000; /* Black box */
+  color: #fff; /* White text color */
+  padding: 80px;
+  border-radius: 10px; /* Rounded corners (optional) */
+  flex-direction: column;
+}
+.faqs_container h2{
+  font-family: 'akira', sans-serif;
+  text-align: center;
+  font-size: 3rem;
+  padding-bottom: 30px;
+}
+/* Popup form styles */
+.popup-form {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px;
+  background-color: #131313;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  color: #fefefe;
+}
+.form-container {
+  padding: 50px;
+  font-family: 'Roboto', sans-serif;
+  color: #fefefe;
+}
+.form-container h2{
+  font-family: 'akira', sans-serif;
+  margin-bottom: 20px;
+}
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close-button:hover {
+  color: red;
+}
+textarea, input[type="file"] {
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.submit-button {
+  background-color: #fefefe;
+  color: #131313;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+/* Gallery, About Us */
+.gallery_sample, .about_us {
+  display: flex; /* Enables Flexbox */
+  flex-direction: column; /* Aligns items in a column */
+  justify-content: center; /* Centers items vertically */
+  align-items: center; /* Centers items horizontally */
+  padding: 150px;
+  margin-top: -100px;
+  flex: 1;
+}
+.gallery_text h2 {
+  font-family: 'akira', sans-serif;
+  font-size: 3.5rem;
+  color: #131313;
+  margin-bottom: 10px;
+  text-align: center; /* Ensures text is centered */
+}
+.gallery_text p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  font-style: italic;
+  color: #131313;
+  line-height: 1.6;
+  text-align: center; /* Ensures text is centered */
+}
+.gallery_frame1, .gallery_frame2 {
+  display: flex; /* Aligns boxes side by side */
+  justify-content: space-between; /* Adds spacing between boxes */
+  gap: 20px; /* Adds consistent spacing between the boxes */
+  max-width: 100%; /* Adjusts the container width */
+  margin: 0 auto; /* Centers the container */
+  padding: 50px 0; /* Adds padding around the frame */
+  flex-wrap: wrap; /* Allows boxes to wrap to the next row if needed */
+  background-color: #131313;
+}
+.gallery_frame2{
+  padding-bottom: 200px;
+}
+.polaroid {
+  display: flex;
+  flex-direction: column; /* Stacks image and text vertically */
+  flex: 1; /* Makes each box flexible in width */
+  background: #fefefe; /* Optional: sets a light background for the box */
+  border: 1px solid #131313; /* Adds a border around each box */
+  border-radius: 0px; /* Rounds the corners of the box */
+  text-align: center; /* Centers text inside the box */
+  padding: 30px; /* Adds inner spacing */
+  max-width: 30%; /* Restricts the width of each box */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+  margin-left: 50px; margin-right: 50px;
+}
+.polaroid:hover {
+  transform: scale(1.05); /* Grows slightly on hover */
+}
+.polaroid_pic img {
+  width: 100%; /* Makes the image fit the container */
+  height: auto; /* Maintains the aspect ratio */
+  border-radius: 8px 8px 0 0; /* Rounds the top corners of the image */
+}
+.polaroid_text h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  font-weight: Bold condensed;
+  margin: 10px 0;
+  color: #131313; /* Sets a neutral text color */
+  text-align: left;
+}
+.polaroid_text p {
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #131313; /* Sets a slightly lighter color for paragraph text */
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .gallery_frame {
+    flex-direction: column; /* Stacks boxes vertically */
+  }
+
+  .polaroid {
+    max-width: 100%; /* Allows boxes to take full width on small screens */
+  }
+}
+
+/* Services */
+.service_frame {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  background-color: #fefefe;
+  margin: 20px;
+  max-width: 100%; /* Ensure the container doesn't overflow */
+}
+.service_from {
+  display: flex;
+  flex-direction: row; /* Stack elements vertically */
+  align-items: center; /* Align items to the start horizontally */
+  justify-content: space-between; /* Center items vertically */
+  width: 100%;
+}
+.image_content_services {
+  flex: 1; /* Allows the image container to take up available space */
+  max-width: 40%; /* Restricts the width of the image container */
+  justify-items: flex-start;
+}
+.image_content_services img {
+  margin: 0; /* Remove external spacing */
+  padding: 0; /* Remove internal spacing */
+}
+form {
+  display: flex;
+  flex-direction: row; /* Arrange form elements vertically */
+  gap: 8px; /* Space between label and input */
+  flex: 2;
+}
+label, input, button {
+  width: auto; /* Allow them to auto-size */
+  margin: 5px 0; /* Space between elements */
+}
+input[type="text"] {
+  width: 200px; /* Adjust the width as needed */
+}
+button {
+  width: 100px; /* Fixed button width */
+  height: 40px; /* Fixed button height */
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #131313;
+  color: #fefefe;
+}
+.custom-file {
+  position: relative;
+  display: inline-block;
+  justify-self: center;
+}
+.custom-file input[type="file"] {
+  opacity: 0; /* Hide the default file input */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.custom-file label {
+  font-family: 'coolvetica', sans-serif;
+  display: inline-block;
+  background-color: #131313;
+  color: #fefefe;
+  padding: 10px 15px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+/* Style Buttons to be Square/Box */
+button {
+  font-family: 'coolvetica', sans-serif;
+  display: inline-block;
+  background-color: #fefefe;
+  color: #131313;
+  border-color: #131313;
+  width: 100px; /* Width and height equal for square shape */
+  height: 40px;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #131313;
+  color: #fefefe;
+}
+.upload button {
+  margin-left: 10px; /* Add spacing between buttons */
+}
+#imageForm p, #imageForm label, #imageForm input {
+  display: inline-block;
+  margin: 0 5px; /* Add spacing between elements */
+}
+#imageForm p {
+  font-size: 18px;
+}
+#imageForm input {
+  width: 100px; /* Adjust the width as necessary */
+}
+/* Additional Styling for Form Layout */
+#imageForm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px; /* Spacing between groups of elements */
+}
+button {
+  margin-top: 10px; /* Add spacing above buttons */
+}
+/* Apply styles only to the form with id "imageForm" */
+#imageForm, #imageForm p, #imageForm label, #imageForm input {
+  font-family: 'coolvetica', sans-serif; /* Ensure Coolvetica is already imported */
+  font-size: 16px;
+  color: #131313; /* Optional: Adjust text color */
+}
+/* Style the Form */
+#imageForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between form elements */
+  margin: 20px;
+}
+/* Style the Input Boxes */
+#imageForm input[type="text"] {
+  border: 1px solid #333; /* Dark border */
+  border-radius: 0; /* Remove rounding for sharp edges */
+  padding: 8px;
+  width: 200px; /* Set a consistent width */
+  font-size: 14px;
+  font-family: 'coolvetica', sans-serif;
+  outline: none; /* Remove outline on focus */
+}
+#imageForm input[type="text"]:focus {
+  border-color: #007bff; /* Optional: Highlight border on focus */
+}
+/* Style the Labels */
+#imageForm label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+/* Style the Paragraph Text */
+#imageForm p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+.container {
+  font-family: 'coolvetica', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+.form-section {
+  width: 60%;
+}
+.form-section h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  font-weight: normal;
+  margin-top: 100px;
+}
+#contacth2{
+  margin-top: 0;
+}
+#order_detailsh2{
+  margin-bottom: 100px;
+}
+#totalp{
+  margin-top: 30px;
+  font-size: 1.5rem;
+}
+#spaces_subtotal{
+  margin-left: 196px;
+}
+#spaces_shipping{
+  margin-left: 176px;
+}
+#spaces_total{
+  margin-left: 200px;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+.half-input {
+  display: flex;
+  gap: 10px;
+}
+.half-input input {
+  flex: 1;
+}
+.payment-method input {
+  width: auto;
+  margin-right: 10px;
+}
+.order-details {
+  width: 35%;
+  border-left: 1px solid #000;
+  padding-left: 20px;
+}
+.order-details h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  font-weight: normal;
+}
+.order-details p {
+  margin: 10px 0;
+  font-size: 1em;
+}
+.checkout-btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  font-size: 1.2em;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
